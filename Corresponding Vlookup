@@ -1,0 +1,31 @@
+## Locates corresponding cell-row lookup
+## A6 is the corresponding cell-row
+--
+##  Designed to search for a value in cell A6 within two separate ranges on different worksheets named ‘Invoice’ and ‘Feedback’. 
+## It first attempts to find the value in the ‘Invoice’ sheet using VLOOKUP. 
+## If it doesn’t find a match or encounters an error, 
+  # it then tries to find the value in the ‘Feedback’ sheet using INDEX and MATCH. 
+## If both searches fail or if A6 is blank, it returns “Not Found”. 
+## Essentially, this formula is used to cross-reference data between two tables and return a corresponding value or a default message if no match is found.
+
+
+
+=IF(
+  ISBLANK(
+    IFERROR(
+      VLOOKUP(A6, 
+        Invoice!$C$6:$E$1490, 3, FALSE
+              ), IFERROR(
+                    INDEX(
+                      Feedback!$D$6:$D$1124, MATCH(
+                          A6, Feedback!$B$6:$B$1124, 0)
+                          ), "")
+                                )), "Not Found", 
+                                  IFERROR(
+                                    VLOOKUP(A6, Invoice!$C$6:$E$1490, 3, FALSE
+                                            ), IFERROR(
+                                                  INDEX(
+                                                      Feedback!$D$6:$D$1124, 
+                                                          MATCH(A6, Feedback!$B$6:$B$1124, 0)
+                                                        ), "")
+                                                              ))
