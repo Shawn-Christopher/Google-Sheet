@@ -1,0 +1,8 @@
+## Works best when there's a designated cell that is a 'dropdown' of months
+
+=SUMIF(
+  Invoice!$M$6:$M$1506, 
+    MATCH(
+      A10, {"January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"}, 0), 
+        Invoice!$H$6:$H$1506
+        )
