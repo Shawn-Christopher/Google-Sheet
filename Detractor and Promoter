@@ -1,0 +1,19 @@
+## Counts the promoters while conditionally dependent on the matched months
+## "5" is a promoter
+
+=SUMIF(
+  Invoice!$M$6:$M$1506, 
+    MATCH(
+      A10, {"January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"}, 0), 
+        Invoice!$H$6:$H$1506
+      )
+
+## 1 to 4 is a detractor
+
+=COUNTIFS(
+  Feedback!F6:F1700, ">0", Feedback!F6:F1700, "<5",
+      Feedback!I6:I1700,
+        MATCH(
+          $A10, {"January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"}, 0)
+          )
+
