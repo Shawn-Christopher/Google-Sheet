@@ -1,0 +1,24 @@
+## It counts the occurrences of each value in column A within column C of the ‘Invoice’ sheet. 
+## It applies this count to every cell in column A that contains data, outputting the result in the corresponding row. 
+## If a cell in column A is empty, it leaves the output cell blank. 
+## This is useful for summarizing how many times each entry in a list appears in another dataset.
+
+
+=ARRAYFORMULA(
+  IF(
+    A6:A<>"", 
+      COUNTIF(
+        Invoice!C6:C, A6:A), "")
+            )
+
+## Same essence but self-querying:
+  # It counts how many times a value in a specific cell repeats in its own column
+
+=ARRAYFORMULA(
+    IF(
+      ISBLANK(C6),"", 
+        IF(
+          COUNTIF($C$6:$C, C6) = 45, "", 
+            COUNTIF(
+              $C$6:$C, C6)
+            )))
