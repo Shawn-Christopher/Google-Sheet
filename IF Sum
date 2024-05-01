@@ -1,0 +1,9 @@
+## IF Sum
+  # This is not Sumif
+
+=IF(
+  SUM(
+    Invoice!H6:H51034)=0, 0, 
+      SUM(
+        Invoice!H6:H51034)
+    )
