@@ -29,3 +29,27 @@
                                                           MATCH(A6, Feedback!$B$6:$B$1124, 0)
                                                         ), "")
                                                               ))
+
+
+## Similar but different range:
+
+=IF(
+  ISBLANK(
+  IFERROR(VLOOKUP(
+    A6, Invoice!$C$6:$D$1490, 2, FALSE), 
+      IFERROR(
+        INDEX(
+          Feedback!$C$6:$C$1124, 
+            MATCH(
+              A6, Feedback!$B$6:$B$1124, 0)), "")
+                  )), "Not Found", 
+                      IFERROR(
+                        VLOOKUP(
+                          A6, Invoice!$C$6:$D$1490, 2, FALSE), 
+                              IFERROR(
+                                  INDEX(
+                                      Feedback!$C$6:$C$1124, 
+                                            MATCH(
+                                                A6, Feedback!$B$6:$B$1124, 0)), "")
+                                                  ))
+
