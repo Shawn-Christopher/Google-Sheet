@@ -1,0 +1,23 @@
+## Returns certain phrases, if it matches a corresponding cell-row from a different sheet
+
+=ARRAYFORMULA(
+  IF(
+    F6:F="", "", 
+      IFERROR(
+          VLOOKUP(
+            F6:F, Products!$A$6:$A$52, 1, FALSE), "Complicated or Unknown Service")
+      ))
+
+
+## Essentially similar formula but with additional conditional VLOOKUP
+
+=ARRAYFORMULA(
+  IF(
+    K6:K = "", "", 
+      IFERROR(
+        IF(
+          H6:H <> 
+            VLOOKUP(K6:K, Products!$A$6:$D$52, 4, FALSE), 
+              "Cost Mismatch", 
+                VLOOKUP(K6:K, Products!$A$6:$D$52, 4, FALSE)), "Possibly a Package")
+    ))
