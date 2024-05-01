@@ -1,0 +1,7 @@
+## Returns the month number from a date-filled column
+
+=ARRAYFORMULA(
+  IF(
+    Expense!E6:E=0, "", 
+      MONTH(
+        Expense!E6:E)))
