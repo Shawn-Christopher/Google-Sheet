@@ -1,0 +1,15 @@
+## Unique & Filter functions 
+## Getting the unique value from a designated column
+## Can be embedded with an array formula
+## <>"" means excluding cells that are empty
+## FILTER is combining the range then filtering it
+## UNIQUE is getting the distinct values from FILTER's output
+
+=UNIQUE(
+  FILTER({
+    Invoice!C6:C1490; Feedback!B6:B1324
+          }, {
+    Invoice!C6:C1490; Feedback!B6:B1324
+          }<>""
+        )
+)
