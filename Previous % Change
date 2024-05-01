@@ -1,0 +1,10 @@
+## Calculates the percent change of the previous cell 
+## This must be placed below the first cell to effectuate a zero starting point
+
+
+=ARRAYFORMULA(
+  IF(
+    ROW(H7:H)>=ROW(H$6), 
+      IFERROR(
+        (H7:H-H6:H)/H6:H, ""), 
+          ""))
