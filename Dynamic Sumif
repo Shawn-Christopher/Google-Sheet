@@ -1,4 +1,6 @@
 ## Works best when there's a designated cell that is a 'dropdown' of months
+## The sumif range must a product of date olap
+## To add more conditions, you may use SUMIFS
 
 =SUMIF(
   Invoice!$M$6:$M$1506, 
